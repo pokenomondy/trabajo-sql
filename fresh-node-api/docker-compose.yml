@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    platform: linux/amd64
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: node src/app.js
+    restart: unless-stopped
